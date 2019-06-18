@@ -214,7 +214,7 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 		 * @return void
 		 */
 		private function includes() {
-		//	require_once AFFWP_PT_PLUGIN_DIR . 'includes/file-name.php';
+			require_once AFFWP_PT_PLUGIN_DIR . 'includes/class-admin.php';
 		}
 
 		/**
@@ -228,6 +228,8 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 			// Plugin meta.
 			add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), null, 2 );
 
+			// Include admin settings hooks
+			new AffiliateWP_Starting_Affiliate_ID_Admin;
 		}
 
 		/**
