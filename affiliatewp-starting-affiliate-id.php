@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: AffiliateWP - Plugin Template
+ * Plugin Name: AffiliateWP - Starting Affiliate ID
  * Plugin URI: https://affiliatewp.com/
- * Description:
+ * Description: Change the starting affiliate ID of your affiliate network.
  * Author: AffiliateWP, LLC
  * Author URI: https://affiliatewp.com
  * Version: 1.0.0
- * Text Domain: affiliatewp-plugin-template
+ * Text Domain: affiliatewp-starting-affiliate-id
  * Domain Path: languages
  *
  * AffiliateWP is distributed under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
+if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 
 	/**
 	 * Setup class.
@@ -35,7 +35,7 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 	 * @since 1.0.0
 	 * @final
 	 */
-	final class AffiliateWP_Plugin_Template {
+	final class AffiliateWP_Starting_Affiliate_ID {
 
 		/**
 		 * Holds the instance.
@@ -46,7 +46,7 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 		 * TL;DR This is a static property property that holds the singleton instance.
 		 *
 		 * @since 1.0.0
-		 * @var   \AffiliateWP_Plugin_Template
+		 * @var   \AffiliateWP_Starting_Affiliate_ID
 		 * @static
 		 */
 		private static $instance;
@@ -68,12 +68,12 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 		 * @since 1.0
 		 * @static
 		 *
-		 * @return \AffiliateWP_Plugin_Template The one true bootstrap instance.
+		 * @return \AffiliateWP_Starting_Affiliate_ID The one true bootstrap instance.
 		 */
 		public static function instance() {
-			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof AffiliateWP_Plugin_Template ) ) {
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof AffiliateWP_Starting_Affiliate_ID ) ) {
 
-				self::$instance = new AffiliateWP_Plugin_Template;
+				self::$instance = new AffiliateWP_Starting_Affiliate_ID;
 
 				self::$instance->setup_constants();
 				self::$instance->load_textdomain();
@@ -96,7 +96,7 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 		 */
 		protected function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliatewp-plugin-template' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliatewp-starting-affiliate-id' ), '1.0' );
 		}
 
 		/**
@@ -108,7 +108,7 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 		 */
 		protected function __wakeup() {
 			// Unserializing instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliatewp-plugin-template' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliatewp-starting-affiliate-id' ), '1.0' );
 		}
 
 		/**
@@ -178,30 +178,30 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 			 *
 			 * @param string $lang_dir Language directory.
 			 */
-			$lang_dir = apply_filters( 'affiliatewp_plugin_template_languages_directory', $lang_dir );
+			$lang_dir = apply_filters( 'affiliatewp_starting_affiliate_id_languages_directory', $lang_dir );
 
 			// Traditional WordPress plugin locale filter..
-			$locale = apply_filters( 'plugin_locale',  get_locale(), 'affiliatewp-plugin-template' );
-			$mofile = sprintf( '%1$s-%2$s.mo', 'affiliatewp-plugin-template', $locale );
+			$locale = apply_filters( 'plugin_locale',  get_locale(), 'affiliatewp-starting-affiliate-id' );
+			$mofile = sprintf( '%1$s-%2$s.mo', 'affiliatewp-starting-affiliate-id', $locale );
 
 			// Setup paths to current locale file.
 			$mofile_local  = $lang_dir . $mofile;
-			$mofile_global = WP_LANG_DIR . '/affiliatewp-plugin-template/' . $mofile;
+			$mofile_global = WP_LANG_DIR . '/affiliatewp-starting-affiliate-id/' . $mofile;
 
 			if ( file_exists( $mofile_global ) ) {
 
 				// Look in global /wp-content/languages/affiliatewp-flag-affiliates/ folder.
-				load_textdomain( 'affiliatewp-plugin-template', $mofile_global );
+				load_textdomain( 'affiliatewp-starting-affiliate-id', $mofile_global );
 
 			} elseif ( file_exists( $mofile_local ) ) {
 
 				// Look in local /wp-content/plugins/affiliatewp-flag-affiliates/languages/ folder.
-				load_textdomain( 'affiliatewp-plugin-template', $mofile_local );
+				load_textdomain( 'affiliatewp-starting-affiliate-id', $mofile_local );
 
 			} else {
 
 				// Load the default language files.
-				load_plugin_textdomain( 'affiliatewp-plugin-template', false, $lang_dir );
+				load_plugin_textdomain( 'affiliatewp-starting-affiliate-id', false, $lang_dir );
 
 			}
 		}
@@ -262,13 +262,13 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 	 * Use this function like you would a global variable, except without needing
 	 * to declare the global.
 	 *
-	 * Example: <?php $affiliatewp_plugin_template = affiliatewp_plugin_template(); ?>
+	 * Example: <?php $affiliatewp_starting_affiliate_id = affiliatewp_starting_affiliate_id(); ?>
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return \AffiliateWP_Plugin_Template The one true bootstrap instance.
+	 * @return \AffiliateWP_Starting_Affiliate_ID The one true bootstrap instance.
 	 */
-	function affiliatewp_plugin_template() {
+	function affiliatewp_starting_affiliate_id() {
 	    if ( ! class_exists( 'Affiliate_WP' ) ) {
 
 	        if ( ! class_exists( 'AffiliateWP_Activation' ) ) {
@@ -276,14 +276,14 @@ if ( ! class_exists( 'AffiliateWP_Plugin_Template' ) ) {
 	        }
 
 	        $activation = new AffiliateWP_Activation( plugin_dir_path( __FILE__ ), basename( __FILE__ ) );
-	        $activation = $activation->run();
+	        $activation->run();
 
 	    } else {
 
-	        return AffiliateWP_Plugin_Template::instance();
+	        return AffiliateWP_Starting_Affiliate_ID::instance();
 
 	    }
 	}
-	add_action( 'plugins_loaded', 'affiliatewp_plugin_template', 100 );
+	add_action( 'plugins_loaded', 'affiliatewp_starting_affiliate_id', 100 );
 
 }
