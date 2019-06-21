@@ -52,10 +52,10 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 
 		// If the value didn't change, bypass this function.
 		if ( $new_auto_increment !== $old_auto_increment ) {
-			$newest_affiliate = affiliate_wp()->affiliates->get_newest_affiliate_id();
+			$newest_affiliate = $this->get_newest_affiliate_id();
 			$auto_increment   = $newest_affiliate > $new_auto_increment ? $newest_affiliate + 1 : $new_auto_increment;
 
-			$updated = affiliate_wp()->affiliates->update_affiliate_id_auto_increment( $auto_increment );
+			$updated = $this->update_affiliate_id_auto_increment( $auto_increment );
 
 			//reset the option to the minimum auto increment value if something went wrong
 			if ( ! $updated || $newest_affiliate > $new_auto_increment ) {
