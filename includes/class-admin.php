@@ -125,18 +125,18 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 
 		if ( affiliate_wp()->affiliates->count() > 0 ) {
 			/* translators: The description used when there are existing affiliates */
-			$starting_affiliate_id_desc = __( 'The minimum ID to use for new affiliate registrations. Note: this number can only ever be greater than the ID used for the most recent affiliate.', 'affiliate-wp' );
+			$starting_affiliate_id_desc = __( 'The minimum ID to use for new affiliate registrations. Note: this number can only ever be greater than the ID used for the most recent affiliate.', 'affiliatewp-starting-affiliate-id' );
 		} else {
 			/* translators: The description used when there are no affiliates yet */
-			$starting_affiliate_id_desc = __( 'The starting ID to use once affiliate registrations begin. Note: this number can only ever be greater than the ID used for the most recent affiliate.', 'affiliate-wp' );
+			$starting_affiliate_id_desc = __( 'The starting ID to use once affiliate registrations begin. Note: this number can only ever be greater than the ID used for the most recent affiliate.', 'affiliatewp-starting-affiliate-id' );
 		}
 
 		$settings['starting_affiliate_id'] = array(
-				'name' => __( 'Starting Affiliate ID', 'affiliate-wp' ),
+				'name' => __( 'Starting Affiliate ID', 'affiliatewp-starting-affiliate-id' ),
 				'desc' => $starting_affiliate_id_desc,
 				'type' => 'number',
 				'max'  => 1000000,
-				'min'  => affiliate_wp()->affiliates->get_newest_affiliate_id() + 1,
+				'min'  => $this->get_newest_affiliate_id() + 1,
 				'step' => 1,
 		);
 
