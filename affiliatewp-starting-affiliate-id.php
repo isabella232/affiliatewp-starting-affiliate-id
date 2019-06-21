@@ -79,6 +79,7 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 				self::$instance->load_textdomain();
 				self::$instance->includes();
 				self::$instance->hooks();
+				self::$instance->start();
 			}
 
 			return self::$instance;
@@ -227,9 +228,13 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 		private function hooks() {
 			// Plugin meta.
 			add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), null, 2 );
+		}
 
-			// Include admin settings hooks
-			new AffiliateWP_Starting_Affiliate_ID_Admin;
+		private function start() {
+			if ( is_admin() ) {
+				// Include admin settings hooks
+				AffiliateWP_Starting_Affiliate_ID_Admin::init();
+			}
 		}
 
 		/**
