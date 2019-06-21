@@ -43,6 +43,8 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 	 * @param array  $new_settings array of new settings passed by update_option.
 	 * @param array  $old_settings array of previous settings passed by update_option.
 	 * @param string $option       Name of the option being updated.
+	 *
+	 * @return array of filtered $new_settings value.
 	 */
 	public function sync_affiliate_id( $new_settings, $old_settings, $option ) {
 		$new_auto_increment = isset( $new_settings['starting_affiliate_id'] ) ? $new_settings['starting_affiliate_id'] : 0;
@@ -60,6 +62,9 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 				$new_settings['starting_affiliate_id'] = $newest_affiliate + 1;
 			}
 		}
+
+		return $new_settings;
+	}
 	}
 
 	/**
