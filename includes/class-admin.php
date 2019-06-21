@@ -9,15 +9,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class AffiliateWP_Starting_Affiliate_ID_Admin{
+/**
+ * Implements admin settings fields and relevant actions.
+ *
+ * @since 1.0.0
+ */
+class AffiliateWP_Starting_Affiliate_ID_Admin {
 
-	public function __construct() {
+	private static $instance = false;
 
-		// Filter the AffiliateWP misc settings
-		add_filter( 'affwp_settings_misc', array( $this, 'add_starting_affiliate_id_setting' ) );
+	private function __construct() { }
 
-		// Set the affiliate ID when the minimum ID is updated.
-		add_action( 'pre_update_option_affwp_settings', array( $this, 'sync_affiliate_id_with_auto_increment_value', ), 10, 3 );
+	public static function init() {
+		if ( ! self::$instance ) {
+			self::$instance = new self;
+
+			// Filter the AffiliateWP misc settings
+			add_filter( 'affwp_settings_misc', array( self::$instance, 'add_starting_affiliate_id_setting' ) );
+
+			// Set the affiliate ID when the minimum ID is updated.
+			add_action( 'pre_update_option_affwp_settings', array( self::$instance, 'sync_affiliate_id', ), 10, 3 );
+		}
 	}
 
 	/**
