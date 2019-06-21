@@ -65,6 +65,48 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 
 		return $new_settings;
 	}
+
+
+	/**
+	 * Fetches the newest affiliate from the database.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return int|mixed int affiliate object or field(s). Otherwise returns 0
+	 */
+	private function get_newest_affiliate_id() {
+
+		$affiliates = affiliate_wp()->affiliates->get_affiliates( array(
+				'fields' => 'ids',
+				'number' => 1,
+				'order'  => 'DESC',
+		) );
+
+		return isset( $affiliates[0] ) ? $affiliates[0] : 0;
+	}
+
+
+	/**
+	 * Updates the affiliate ID auto increment to the specified value.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $auto_increment The auto increment value to set.
+	 * @return bool True if update was successful, otherwise false.
+	 */
+	private function update_affiliate_id_auto_increment( $auto_increment ) {
+		global $wpdb;
+		$table_name = affiliate_wp()->affiliates->table_name;
+
+		$minimum_id = absint( $auto_increment );
+
+		$sql = "ALTER TABLE {$table_name}
+						MODIFY `affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
+						AUTO_INCREMENT={$minimum_id};";
+
+		$result = $wpdb->query( $sql );
+
+		return false !== $result;
 	}
 
 	/**
