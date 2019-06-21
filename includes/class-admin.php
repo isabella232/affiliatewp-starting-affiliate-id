@@ -1,7 +1,11 @@
 <?php
 /**
- * Starting Affiliate ID Admin
- * @since: 1.0.0
+ * Affiliate ID Admin Class: AffiliateWP_Starting_Affiliate_ID_Admin class
+ *
+ * Adds the starting affiliate ID admin settings fields and runs relevant actions.
+ *
+ * @package AffiliateWP
+ * @since 1.0.0
  */
 
 
@@ -112,6 +116,9 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 	/**
 	 * Adds the starting affiliate ID setting to the AffiliateWP settings page.
 	 * @param $settings array of settings provided by AffiliateWP.
+	 *
+	 * @since 1.0.0
+	 *
 	 * @return array of filtered settings.
 	 */
 	public function add_starting_affiliate_id_setting( $settings ) {
