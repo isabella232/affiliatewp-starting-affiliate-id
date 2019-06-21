@@ -44,7 +44,7 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 	 * @param array  $old_settings array of previous settings passed by update_option.
 	 * @param string $option       Name of the option being updated.
 	 */
-	public function sync_affiliate_id_with_auto_increment_value( $new_settings, $old_settings, $option ) {
+	public function sync_affiliate_id( $new_settings, $old_settings, $option ) {
 		$new_auto_increment = isset( $new_settings['starting_affiliate_id'] ) ? $new_settings['starting_affiliate_id'] : 0;
 		$old_auto_increment = isset( $old_settings['starting_affiliate_id'] ) ? $old_settings['starting_affiliate_id'] : 0;
 
