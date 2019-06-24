@@ -140,23 +140,23 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 		 */
 		private function setup_constants() {
 			// Plugin version.
-			if ( ! defined( 'AFFWP_PT_VERSION' ) ) {
-				define( 'AFFWP_PT_VERSION', $this->version );
+			if ( ! defined( 'AFFWP_SAI_VERSION' ) ) {
+				define( 'AFFWP_SAI_VERSION', $this->version );
 			}
 
 			// Plugin Folder Path.
-			if ( ! defined( 'AFFWP_PT_PLUGIN_DIR' ) ) {
-				define( 'AFFWP_PT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+			if ( ! defined( 'AFFWP_SAI_PLUGIN_DIR' ) ) {
+				define( 'AFFWP_SAI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			}
 
 			// Plugin Folder URL.
-			if ( ! defined( 'AFFWP_PT_PLUGIN_URL' ) ) {
-				define( 'AFFWP_PT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+			if ( ! defined( 'AFFWP_SAI_PLUGIN_URL' ) ) {
+				define( 'AFFWP_SAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 			}
 
 			// Plugin Root File.
-			if ( ! defined( 'AFFWP_PT_PLUGIN_FILE' ) ) {
-				define( 'AFFWP_PT_PLUGIN_FILE', __FILE__ );
+			if ( ! defined( 'AFFWP_SAI_PLUGIN_FILE' ) ) {
+				define( 'AFFWP_SAI_PLUGIN_FILE', __FILE__ );
 			}
 		}
 
@@ -215,7 +215,7 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 		 * @return void
 		 */
 		private function includes() {
-			require_once AFFWP_PT_PLUGIN_DIR . 'includes/class-admin.php';
+			require_once AFFWP_SAI_PLUGIN_DIR . 'includes/class-admin.php';
 		}
 
 		/**
