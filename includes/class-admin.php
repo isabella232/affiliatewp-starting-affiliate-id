@@ -60,6 +60,8 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 			// Set the affiliate ID when the minimum ID is updated.
 			add_action( 'pre_update_option_affwp_settings', array( self::$instance, 'sync_affiliate_id', ), 10, 3 );
 		}
+
+		return self::$instance;
 	}
 
 	/**
