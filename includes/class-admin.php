@@ -20,10 +20,36 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class AffiliateWP_Starting_Affiliate_ID_Admin {
 
+	/**
+	 * Holds the instance.
+	 *
+	 * Ensures that only one instance of this class exists in memory at any
+	 * one time and it also prevents needing to define globals all over the place.
+	 *
+	 * @since 1.0.0
+	 * @var   \AffiliateWP_Starting_Affiliate_ID_Admin
+	 * @static
+	 */
 	private static $instance = false;
 
+	/**
+	 * AffiliateWP_Starting_Affiliate_ID_Admin constructor.
+	 *
+	 * @since 1.0.0
+	 */
 	private function __construct() { }
 
+	/**
+	 * Generates the main instance of this class, and runs actions related to this class.
+	 *
+	 * Ensures that only one instance of bootstrap exists in memory at any one
+	 * time. Also ensures that all filters and actions are only set once.
+	 *
+	 * @since 1.0
+	 * @static
+	 *
+	 * @return \AffiliateWP_Starting_Affiliate_ID_Admin The one true instance.
+	 */
 	public static function init() {
 		if ( ! self::$instance ) {
 			self::$instance = new self;

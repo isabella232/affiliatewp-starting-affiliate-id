@@ -230,6 +230,13 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 			add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), null, 2 );
 		}
 
+		/**
+		 * Sets up plugin-specific actions and classes.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
 		private function start() {
 			if ( is_admin() ) {
 				// Include admin settings hooks
