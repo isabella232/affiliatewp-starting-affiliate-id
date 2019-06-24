@@ -133,8 +133,8 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 		$minimum_id = absint( $auto_increment );
 
 		$sql = "ALTER TABLE {$table_name}
-						MODIFY `affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
-						AUTO_INCREMENT={$minimum_id};";
+		MODIFY `affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
+		AUTO_INCREMENT={$minimum_id};";
 
 		$result = $wpdb->query( $sql );
 
