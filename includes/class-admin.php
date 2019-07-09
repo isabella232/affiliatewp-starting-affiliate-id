@@ -4,10 +4,11 @@
  *
  * Adds the starting affiliate ID admin settings fields and runs relevant actions.
  *
- * @package AffiliateWP
+ * @package AffiliateWP_Starting_Affiliate_ID
+ *
  * @since 1.0.0
  */
-
+namespace AffiliateWP_Starting_Affiliate_ID;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class AffiliateWP_Starting_Affiliate_ID_Admin {
+class Admin {
 
 	/**
 	 * Holds the instance.
@@ -27,7 +28,7 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 	 * one time and it also prevents needing to define globals all over the place.
 	 *
 	 * @since 1.0.0
-	 * @var   \AffiliateWP_Starting_Affiliate_ID_Admin
+	 * @var   \AffiliateWP_Starting_Affiliate_ID\Admin
 	 * @static
 	 */
 	private static $instance = false;
@@ -48,7 +49,7 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 	 * @since 1.0
 	 * @static
 	 *
-	 * @return \AffiliateWP_Starting_Affiliate_ID_Admin The one true instance.
+	 * @return \AffiliateWP_Starting_Affiliate_ID\Admin The one true instance.
 	 */
 	public static function init() {
 		if ( ! self::$instance ) {
