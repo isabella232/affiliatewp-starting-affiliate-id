@@ -191,12 +191,12 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 
 			if ( file_exists( $mofile_global ) ) {
 
-				// Look in global /wp-content/languages/affiliatewp-flag-affiliates/ folder.
+				// Look in global /wp-content/languages/affiliatewp-starting-affiliate-id/ folder.
 				load_textdomain( 'affiliatewp-starting-affiliate-id', $mofile_global );
 
 			} elseif ( file_exists( $mofile_local ) ) {
 
-				// Look in local /wp-content/plugins/affiliatewp-flag-affiliates/languages/ folder.
+				// Look in local /wp-content/plugins/affiliatewp-starting-affiliate-id/languages/ folder.
 				load_textdomain( 'affiliatewp-starting-affiliate-id', $mofile_local );
 
 			} else {
@@ -259,7 +259,7 @@ if ( ! class_exists( 'AffiliateWP_Starting_Affiliate_ID' ) ) {
 
 				$url = admin_url( 'admin.php?page=affiliate-wp-add-ons' );
 
-				$plugins_link = array( '<a alt="' . esc_attr__( 'Get more add-ons for AffiliateWP', 'affiliatewp-flag-affiliates' ) . '" href="' . esc_url( $url ) . '">' . __( 'More add-ons', 'affiliatewp-flag-affiliates' ) . '</a>' );
+				$plugins_link = array( '<a alt="' . esc_attr__( 'Get more add-ons for AffiliateWP', 'affiliatewp-starting-affiliate-id' ) . '" href="' . esc_url( $url ) . '">' . __( 'More add-ons', 'affiliatewp-starting-affiliate-id' ) . '</a>' );
 
 		        $links = array_merge( $links, $plugins_link );
 		    }
