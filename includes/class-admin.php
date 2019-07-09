@@ -166,6 +166,7 @@ class AffiliateWP_Starting_Affiliate_ID_Admin {
 				'max'  => 1000000,
 				'min'  => $this->get_newest_affiliate_id() + 1,
 				'step' => 1,
+				'size' => 'medium'
 		);
 
 		return $settings;
