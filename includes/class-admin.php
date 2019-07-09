@@ -160,14 +160,17 @@ class Admin {
 			$description = __( 'The starting ID to use once affiliate registrations begin. Note: this number can only ever be greater than the ID used for the most recent affiliate.', 'affiliatewp-starting-affiliate-id' );
 		}
 
+		$minimum = $this->get_newest_affiliate_id() + 1;
+
 		$settings['starting_affiliate_id'] = array(
 				'name' => __( 'Starting Affiliate ID', 'affiliatewp-starting-affiliate-id' ),
 				'desc' => $description,
 				'type' => 'number',
 				'max'  => 1000000,
-				'min'  => $this->get_newest_affiliate_id() + 1,
+				'min'  => $minimum,
 				'step' => 1,
-				'size' => 'medium'
+				'size' => 'medium',
+				'std'  => $minimum,
 		);
 
 		return $settings;
