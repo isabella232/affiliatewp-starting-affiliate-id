@@ -212,7 +212,7 @@ final class AffWP_SAI_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_label() {
-		return esc_html__( 'AffiliateWP - Plugin Template Requirements', 'affiliatewp-starting-affiliate-id' );
+		return esc_html__( 'AffiliateWP - Starting Affiliate ID Requirements', 'affiliatewp-starting-affiliate-id' );
 	}
 
 	/**
