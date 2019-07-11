@@ -1,17 +1,34 @@
-=== AffiliateWP - Plugin Template ===
+=== AffiliateWP - Starting Affiliate ID ===
 Contributors:
 Tags: AffiliateWP
-Requires at least: 4.4
-Tested up to: 4.7.2
+Requires at least: 5.0
+Requires PHP: 5.6
+Tested up to: 5.2.1
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Description here
+This add-on for AffiliateWP allows you specify the starting affiliateID for your affiliate program.
 
 == Description ==
 
 > This plugin requires [AffiliateWP](https://affiliatewp.com/ "AffiliateWP") in order to function.
+
+The Starting Affiliate ID add-on allows you to:
+
+* Set the ID of the first affiliate who registers for your new affiliate program, or
+* Set the ID for the next affiliate who registers for your existing affiliate program.
+
+Setting your starting affiliate ID to a higher ID allows you to portray a more established affiliate program.
+
+= Set a custom ID for the very first affiliate who registers =
+Instead of 1, you could set it to 134, 753 or even 7563. In fact, you can configure any number up to 1,000,000. Whichever number you decide on, it will be given to the first user who registers as an affiliate on your website. As each new affiliate registers, their ID will increment by 1.
+
+= Set a custom ID for your next affiliate registration =
+Already have affiliates? You can still use this add-on to set the next affiliate ID. For example, if there are already 54 registered affiliates, you can set the next ID to 646. The next affiliate who registers will have that ID of 646.
+
+= A note before setting a custom affiliate ID =
+The Starting Affiliate ID must always be higher than the ID of your most recent affiliate. Make sure you're satisfied with your custom ID before saving. Once an affiliate registers and receives that ID, it can no longer be lowered.
 
 **What is AffiliateWP?**
 
@@ -23,6 +40,7 @@ Description here
 1. Upload to your site
 1. Navigate to `wp-admin/plugins.php` on your site (your WP Admin plugin page)
 1. Activate this plugin
+1. Go to Affiliates &rarr; Settings &rarr; Misc to set a custom Starting Affiliate ID
 
 OR you can just install it with WordPress by going to Plugins >> Add New >> and type this plugin's name
 
@@ -30,5 +48,5 @@ OR you can just install it with WordPress by going to Plugins >> Add New >> and 
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * Initial release
