@@ -1,5 +1,5 @@
 === AffiliateWP - Starting Affiliate ID ===
-Contributors:
+Contributors: alexstandiford, drewapicture
 Tags: AffiliateWP
 Requires at least: 5.0
 Requires PHP: 5.6
