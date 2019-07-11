@@ -81,7 +81,7 @@ final class AffWP_SAI_Requirements_Check {
 
 		// AffWP
 		'affwp' => array(
-			'minimum' => '2.2.17',
+			'minimum' => '2.3',
 			'name'    => 'AffiliateWP',
 			'exists'  => true,
 			'current' => false,
