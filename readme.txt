@@ -24,6 +24,7 @@ This add-on for AffiliateWP allows you specify the starting affiliateID for your
 1. Upload to your site
 1. Navigate to `wp-admin/plugins.php` on your site (your WP Admin plugin page)
 1. Activate this plugin
+1. Go to Affiliates &rarr; Settings &rarr; Misc to set a custom Starting Affiliate ID
 
 OR you can just install it with WordPress by going to Plugins >> Add New >> and type this plugin's name
 
