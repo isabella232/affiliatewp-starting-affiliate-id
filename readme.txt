@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This add-on for AffiliateWP allows you specify the starting affiliateID for your affiliate program.
+This add-on for AffiliateWP allows you specify the starting affiliate ID for your affiliate program.
 
 == Description ==
 
