@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: AffiliateWP - Starting Affiliate ID
- * Plugin URI: https://sandhillsdev.com
+ * Plugin URI: https://affiliatewp.com
  * Description: Change the starting affiliate ID of your affiliate network.
  * Author: Sandhills Development, LLC
- * Author URI: https://affiliatewp.com
+ * Author URI: https://sandhillsdev.com
  * Version: 1.0.0
  * Text Domain: affiliatewp-starting-affiliate-id
  * Domain Path: languages
