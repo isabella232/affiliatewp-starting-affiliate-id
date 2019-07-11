@@ -1,8 +1,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: AffiliateWP - Plugin Template\n"
-"POT-Creation-Date: 2019-07-12 09:07+1200\n"
+"Project-Id-Version: AffiliateWP - Starting Affiliate ID\n"
+"POT-Creation-Date: 2019-07-12 09:37+1200\n"
 "PO-Revision-Date: 2015-04-04 11:12-0600\n"
 "Last-Translator: Andrew Munro, Sumobi <andrew@sumobi.com>\n"
 "Language-Team: AffiliateWP <support@affiliatewp.com>\n"
