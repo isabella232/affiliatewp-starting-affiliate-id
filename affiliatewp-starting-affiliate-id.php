@@ -157,7 +157,7 @@ final class AffWP_SAI_Requirements_Check {
 	 * @return string URL to an externally-hosted minimum requirements document.
 	 */
 	private function unmet_requirements_url() {
-		return 'https://...';
+		return 'https://docs.affiliatewp.com/article/2156-starting-affiliate-id-minimum-requirements';
 	}
 
 	/**
