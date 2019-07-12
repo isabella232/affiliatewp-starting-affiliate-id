@@ -107,7 +107,7 @@ class Admin {
 	 *
 	 * @return int|mixed int affiliate object or field(s). Otherwise returns 0
 	 */
-	private function get_newest_affiliate_id() {
+	public static function get_newest_affiliate_id() {
 
 		$affiliates = affiliate_wp()->affiliates->get_affiliates( array(
 				'fields' => 'ids',
@@ -127,7 +127,7 @@ class Admin {
 	 * @param int $auto_increment The auto increment value to set.
 	 * @return bool True if update was successful, otherwise false.
 	 */
-	private function update_affiliate_id_auto_increment( $auto_increment ) {
+	public static function update_affiliate_id_auto_increment( $auto_increment ) {
 		global $wpdb;
 		$table_name = affiliate_wp()->affiliates->table_name;
 
