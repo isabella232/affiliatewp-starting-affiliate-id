@@ -116,9 +116,17 @@ install_db() {
 }
 
 install_affwp() {
-    echo "Installing AffiliateWP"
-    git clone git@github.com:AffiliateWP/AffiliateWP.git
-    mv affiliate-wp $WP_CORE_DIR/wp-content/plugins/
+	PLUGIN_DIR=${WP_CORE_DIR}/wp-content/plugins/AffiliateWP
+	if [[ ! -d ${PLUGIN_DIR} ]]
+	then
+		echo "Downloading AffiliateWP"
+		cwd=$(pwd)
+		cd ${WP_CORE_DIR}/wp-content/plugins
+		git clone git@github.com:AffiliateWP/AffiliateWP.git --depth 1
+		cd ${cwd}
+	else
+		echo "AffiliateWP Is already downloaded, bypassing installation."
+	fi
 }
 
 install_wp
