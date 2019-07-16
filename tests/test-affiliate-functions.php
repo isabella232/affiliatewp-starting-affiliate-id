@@ -59,7 +59,7 @@ class Tests extends UnitTestCase {
 		$highest_affiliate_id      = max( self::$affiliates );
 		$test_highest_affiliate_id = Admin::get_newest_affiliate_id();
 
-		$this->assertEquals( $test_highest_affiliate_id, $highest_affiliate_id );
+		$this->assertSame( $test_highest_affiliate_id, $highest_affiliate_id );
 	}
 
 	/**
@@ -103,6 +103,6 @@ class Tests extends UnitTestCase {
 		$new_user      = parent::affwp()->user->create();
 		$new_affiliate = affiliate_wp()->affiliates->add( $new_user );
 
-		$this->assertEquals( $auto_increment, $new_affiliate );
+		$this->assertSame( $auto_increment, $new_affiliate );
 	}
 }
