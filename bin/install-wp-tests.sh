@@ -122,7 +122,7 @@ install_affwp() {
 		echo "Downloading AffiliateWP"
 		cwd=$(pwd)
 		cd ${WP_CORE_DIR}/wp-content/plugins
-		git clone git@github.com:AffiliateWP/AffiliateWP.git --depth 1
+		git clone git@github.com:AffiliateWP/AffiliateWP.git AffiliateWP --depth 1
 		cd ${cwd}
 	else
 		echo "AffiliateWP Is already downloaded, bypassing installation."
