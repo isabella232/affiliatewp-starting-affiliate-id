@@ -69,7 +69,6 @@ final class AffiliateWP_Starting_Affiliate_ID {
 
 		self::$instance->setup_constants();
 		self::$instance->load_textdomain();
-		self::$instance->includes();
 		self::$instance->hooks();
 		self::$instance->start();
 
@@ -167,17 +166,17 @@ final class AffiliateWP_Starting_Affiliate_ID {
 
 		// Plugin Folder Path.
 		if ( ! defined( 'AFFWP_SAI_PLUGIN_DIR' ) ) {
-			define( 'AFFWP_SAI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+			define( 'AFFWP_SAI_PLUGIN_DIR', plugin_dir_path( $this->file ) );
 		}
 
 		// Plugin Folder URL.
 		if ( ! defined( 'AFFWP_SAI_PLUGIN_URL' ) ) {
-			define( 'AFFWP_SAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+			define( 'AFFWP_SAI_PLUGIN_URL', plugin_dir_url( $this->file ) );
 		}
 
 		// Plugin Root File.
 		if ( ! defined( 'AFFWP_SAI_PLUGIN_FILE' ) ) {
-			define( 'AFFWP_SAI_PLUGIN_FILE', __FILE__ );
+			define( 'AFFWP_SAI_PLUGIN_FILE', $this->file );
 		}
 	}
 
@@ -191,7 +190,7 @@ final class AffiliateWP_Starting_Affiliate_ID {
 	public function load_textdomain() {
 
 		// Set filter for plugin's languages directory.
-		$lang_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+		$lang_dir = dirname( plugin_basename( $this->file ) ) . '/languages/';
 
 		/**
 		 * Filters the languages directory for the add-on.
@@ -229,18 +228,6 @@ final class AffiliateWP_Starting_Affiliate_ID {
 	}
 
 	/**
-	 * Includes necessary files.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
-	private function includes() {
-		// Bring in the autoloader.
-		require_once dirname( __FILE__ ) . '/lib/autoload.php';
-	}
-
-	/**
 	 * Sets up the default hooks and actions.
 	 *
 	 * @since 1.0.0
@@ -262,7 +249,7 @@ final class AffiliateWP_Starting_Affiliate_ID {
 	private function start() {
 		if ( is_admin() ) {
 			// Include admin settings hooks
-			AffiliateWP_SAI\Admin::init();
+			require_once AFFWP_SAI_PLUGIN_DIR . 'includes/class-admin.php';
 		}
 	}
 
@@ -277,7 +264,7 @@ final class AffiliateWP_Starting_Affiliate_ID {
 	 */
 	public function plugin_meta( $links, $file ) {
 
-		if ( $file == plugin_basename( __FILE__ ) ) {
+		if ( $file == plugin_basename( $this->file ) ) {
 
 			$url = admin_url( 'admin.php?page=affiliate-wp-add-ons' );
 
@@ -305,18 +292,5 @@ final class AffiliateWP_Starting_Affiliate_ID {
  * @return \AffiliateWP_Starting_Affiliate_ID The one true bootstrap instance.
  */
 function affiliatewp_starting_affiliate_id() {
-	if ( ! class_exists( 'Affiliate_WP' ) ) {
-
-		if ( ! class_exists( 'AffiliateWP_Activation' ) ) {
-			require_once 'includes/class-activation.php';
-		}
-
-		$activation = new AffiliateWP_Activation( plugin_dir_path( __FILE__ ), basename( __FILE__ ) );
-		$activation->run();
-
-	} else {
-
-		return AffiliateWP_Starting_Affiliate_ID::instance();
-
-	}
+	return AffiliateWP_Starting_Affiliate_ID::instance();
 }
