@@ -1,14 +1,4 @@
 <?php
-/**
- * Affiliate ID Admin Class: AffiliateWP_Starting_Affiliate_ID_Admin class
- *
- * Adds the starting affiliate ID admin settings fields and runs relevant actions.
- *
- * @package AffiliateWP_Starting_Affiliate_ID
- *
- * @since 1.0.0
- */
-namespace AffiliateWP_Starting_Affiliate_ID;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class Admin {
+class AffiliateWP_Starting_Affiliate_ID_Admin {
 
 	/**
 	 * Holds the instance.
@@ -38,31 +28,12 @@ class Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	private function __construct() { }
+	public function __construct() {
+		// Filter the AffiliateWP misc settings
+		add_filter( 'affwp_settings_misc', array( $this, 'add_starting_affiliate_id_setting' ) );
 
-	/**
-	 * Generates the main instance of this class, and runs actions related to this class.
-	 *
-	 * Ensures that only one instance of bootstrap exists in memory at any one
-	 * time. Also ensures that all filters and actions are only set once.
-	 *
-	 * @since 1.0
-	 * @static
-	 *
-	 * @return \AffiliateWP_Starting_Affiliate_ID\Admin The one true instance.
-	 */
-	public static function init() {
-		if ( ! self::$instance ) {
-			self::$instance = new self;
-
-			// Filter the AffiliateWP misc settings
-			add_filter( 'affwp_settings_misc', array( self::$instance, 'add_starting_affiliate_id_setting' ) );
-
-			// Set the affiliate ID when the minimum ID is updated.
-			add_action( 'pre_update_option_affwp_settings', array( self::$instance, 'sync_affiliate_id', ), 10, 3 );
-		}
-
-		return self::$instance;
+		// Set the affiliate ID when the minimum ID is updated.
+		add_action( 'pre_update_option_affwp_settings', array( $this, 'sync_affiliate_id', ), 10, 3 );
 	}
 
 	/**
@@ -177,3 +148,4 @@ class Admin {
 	}
 
 }
+new AffiliateWP_Starting_Affiliate_ID_Admin;
