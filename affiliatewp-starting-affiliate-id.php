@@ -27,8 +27,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'AffiliateWP_Requirements_Check' ) ) {
-	require_once dirname( __FILE__ ) . '/includes/lib/affwp/class-affiliatewp-requirements-check.php';
+if ( ! class_exists( 'AffiliateWP_Requirements_Check_v1_1' ) ) {
+	require_once dirname( __FILE__ ) . '/includes/lib/affwp/class-affiliatewp-requirements-check-v1-1.php';
 }
 
 /**
@@ -38,7 +38,7 @@ if ( ! class_exists( 'AffiliateWP_Requirements_Check' ) ) {
  *
  * @see Affiliate_WP_Requirements_Check
  */
-class AffiliateWP_SAI_Requirements_Check extends AffiliateWP_Requirements_Check {
+class AffiliateWP_SAI_Requirements_Check extends AffiliateWP_Requirements_Check_v1_1 {
 
 	/**
 	 * Plugin slug.
