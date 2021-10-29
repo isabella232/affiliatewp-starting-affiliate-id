@@ -5,7 +5,7 @@
  * Description: Change the starting affiliate ID of your affiliate program.
  * Author: Sandhills Development, LLC
  * Author URI: https://sandhillsdev.com
- * Version: 1.1
+ * Version: 1.2
  * Text Domain: affiliatewp-starting-affiliate-id
  * Domain Path: languages
  *

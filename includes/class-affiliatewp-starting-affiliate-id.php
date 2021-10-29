@@ -44,7 +44,7 @@ final class AffiliateWP_Starting_Affiliate_ID {
 	 * @since 1.0.0
 	 * @var    string
 	 */
-	private $version = '1.1';
+	private $version = '1.2';
 
 	/**
 	 * Generates the main bootstrap instance.

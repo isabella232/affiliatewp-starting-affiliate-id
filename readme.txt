@@ -1,10 +1,10 @@
 === AffiliateWP - Starting Affiliate ID ===
 Contributors: alexstandiford, drewapicture
 Tags: AffiliateWP
-Requires at least: 5.0
+Requires at least: 5.2
 Requires PHP: 5.6
 Tested up to: 5.2.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ OR you can just install it with WordPress by going to Plugins >> Add New >> and 
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 1.2 =
+* New: Requires WordPress 5.2 minimum
 
 = 1.1 =
 * New: Enforce minimum dependency requirements checking
