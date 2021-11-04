@@ -8,7 +8,7 @@
  * @subpackage  Tools
  * @copyright   Copyright (c) 2021, Sandhills Development, LLC
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @version     1.0.0
+ * @version     1.1.0
  */
 
 // Exit if accessed directly
@@ -18,9 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Class used by AffiliateWP to enforce minimum requirements for itself and its add-ons.
  *
  * @since 1.0.0
+ * @since 1.1.0 Renamed to AffiliateWP_Requirements_Check_v1_1
  * @abstract
  */
-abstract class AffiliateWP_Requirements_Check {
+abstract class AffiliateWP_Requirements_Check_v1_1 {
 
 	/**
 	 * Plugin base file.
@@ -50,6 +51,7 @@ abstract class AffiliateWP_Requirements_Check {
 	 * Requirements array.
 	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 WordPress minimum version raised to 5.2.
 	 * @var   array[]
 	 */
 	protected $requirements = array(
@@ -65,7 +67,7 @@ abstract class AffiliateWP_Requirements_Check {
 
 		// WordPress.
 		'wp' => array(
-			'minimum' => '5.0.0',
+			'minimum' => '5.2.0',
 			'name'    => 'WordPress',
 			'exists'  => true,
 			'current' => false,
@@ -97,8 +99,14 @@ abstract class AffiliateWP_Requirements_Check {
 		// Merge add-on requirements (if any).
 		$this->requirements = array_merge( $this->requirements, $this->addon_requirements );
 
+		$affwp_version = get_option( 'affwp_version' );
+
 		// Always load translations.
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		if ( version_compare( $affwp_version, '2.7', '<' ) ) {
+			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		} else {
+			add_action( 'affwp_plugins_loaded', array( $this, 'load_textdomain' ) );
+		}
 	}
 
 	/**
@@ -513,36 +521,50 @@ abstract class AffiliateWP_Requirements_Check {
 	/**
 	 * Handles loading the plugin-specific text-domain.
 	 *
+	 * Looks first for a global mo file, then one located in the plugin's languages
+	 * directory, and if neither of those options are available, the core WordPress
+	 * translations path hierarchy is used:
+	 *
+	 * - Global: wp-content/languages/plugins/{slug}-{locale}.mo
+	 * - Local: wp-content/plugins/{plugin_dir}/languages/{slug}-{locale}.mo
+	 * - WordPress: See load_plugin_textdomain()
+	 *
 	 * @since 1.0.0
+	 * @since 1.1.0 Refactored for global mo-file handling adjustments
 	 *
 	 * @return void
 	 */
 	public function load_textdomain() {
+		$plugin_dir = dirname( plugin_basename( $this->get_file() ) );
+
 		// Set filter for plugin's languages directory.
-		$lang_dir = dirname( plugin_basename( $this->get_file() ) ) . '/languages/';
+		$lang_dir = $plugin_dir . '/languages';
 
 		/**
 		 * Filters the languages directory for AffiliateWP - Affiliate Portal plugin.
 		 *
 		 * @since 1.0
 		 *
-		 * @param string $lang_dir Language directory.
+		 * @param string $lang_dir Language directory. Includes a trailing slash for back-compat.
 		 */
-		$lang_dir = apply_filters( $this->base . '_languages_directory', $lang_dir );
+		$lang_dir = apply_filters( $this->base . '_languages_directory', trailingslashit( $lang_dir ) );
 
 		// Traditional WordPress plugin locale filter.
-		$locale   = apply_filters( 'plugin_locale',  get_locale(), $this->slug );
-		$mofile   = sprintf( '%1$s-%2$s.mo', $this->slug, $locale );
+		$locale = apply_filters( 'plugin_locale',  get_locale(), $this->slug );
+		$mofile = sprintf( '%1$s-%2$s.mo', $this->slug, $locale );
 
-		// Setup paths to current locale file.
-		$mofile_local  = $lang_dir . $mofile;
-		$mofile_global = WP_LANG_DIR . '/' . $lang_dir . '/' . $mofile;
+		//
+		// Setup and check paths to current locale file.
+		//
+
+		$mofile_global = WP_LANG_DIR . '/plugins/' . $mofile;
+		$mofile_local  = WP_PLUGIN_DIR . '/' . $lang_dir . $mofile;
 
 		if ( file_exists( $mofile_global ) ) {
-			// Look in global /wp-content/languages/{plugin_dir}/ folder.
+			// Load wp-content/languages/{slug}/{slug}-{locale}.mo
 			load_textdomain( $this->slug, $mofile_global );
 		} elseif ( file_exists( $mofile_local ) ) {
-			// Look in local /wp-content/plugins/{plugin_dir}/languages/ folder.
+			// Load wp-content/plugins/{plugin_dir}/languages/{slug}-{locale}.mo
 			load_textdomain( $this->slug, $mofile_local );
 		} else {
 			// Load the default language files.
